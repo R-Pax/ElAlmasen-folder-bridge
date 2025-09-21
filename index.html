@@ -72,35 +72,37 @@
   </div>
 
   <script>
-    const backgrounds = [
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg1.png",
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg2.png",
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg3.png",
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg4.png",
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg5.png",
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg6.png",
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg7.png",
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg8.png",
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg9.png",
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg10.png",
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg11.png",
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg12.png",
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg13.png",
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg14.png",
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg15.png",
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg16.png",
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg17.png",
-      "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg18.png"
-    ];
+  const backgrounds = [
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg1.png",
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg2.png",
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg3.png",
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg4.png",
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg5.png",
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg6.png",
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg7.png",
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg8.png",
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg9.png",
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg10.png",
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg11.png",
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg12.png",
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg13.png",
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg14.png",
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg15.png",
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg16.png",
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg17.png",
+    "https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/backgrounds/bg18.png"
+  ];
 
-    let current = 0;
-    const bg1 = document.getElementById("background");
-    const bg2 = document.getElementById("background2");
+  let current = 0;
+  const bg1 = document.getElementById("background");
+  const bg2 = document.getElementById("background2");
 
-    function changeBackground() {
-      const next = (current + 1) % backgrounds.length;
-      const newBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+  function preloadAndSwap() {
+    const newBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+    const img = new Image();
+    img.src = newBg;
 
+    img.onload = () => {
       if (current % 2 === 0) {
         bg2.style.backgroundImage = `url('${newBg}')`;
         bg2.style.opacity = 1;
@@ -110,13 +112,15 @@
         bg1.style.opacity = 1;
         bg2.style.opacity = 0;
       }
-
       current++;
-    }
+    };
+  }
 
-    setInterval(changeBackground, 10000);
+  // Change every 10 seconds
+  setInterval(preloadAndSwap, 10000);
 
-    bg1.style.backgroundImage = `url('${backgrounds[Math.floor(Math.random() * backgrounds.length)]}')`;
-  </script>
+  // Initial background
+  bg1.style.backgroundImage = `url('${backgrounds[Math.floor(Math.random() * backgrounds.length)]}')`;
+</script>
 </body>
 </html>
