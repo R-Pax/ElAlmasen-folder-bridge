@@ -1,21 +1,64 @@
 <!doctype html>
 <html>
 <head>
-  <title>ElAlmasen</title>
+  <title>ElAlmasen - Login</title>
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 50px; }
-    .btn {
-      background: #0078d7; color: white; padding: 12px 24px;
-      border-radius: 8px; text-decoration: none; font-size: 18px;
+    body { 
+      font-family: sans-serif; 
+      margin: 0; 
+      background: #f9f9f9; 
+      height: 100vh; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
     }
-    .btn:hover { background: #005fa3; }
+    .topbar {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .btn {
+      background: #0078d7;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .btn:hover {
+      background: #005fa3;
+    }
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    input {
+      padding: 10px;
+      width: 250px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
   </style>
 </head>
 <body>
-  <h1>ElAlmasen</h1>
-  <p>A simple way of accessing your private files</p>
-  <a class="btn" href="https://raw.githubusercontent.com/R-Pax/ElAlmasen-folder-bridge/main/elalmasen.exe">
-  Download for Windows
-  </a>
+  <div class="topbar">
+    <a class="btn" href="https://github.com/R-Pax/ElAlmasen-folder-bridge/releases/latest/download/elalmasen.exe">
+      Download
+    </a>
+  </div>
+  <div class="card">
+    <h1>ElAlmasen</h1>
+    <p>Enter your email to log in:</p>
+    <form action="{{ url_for('files.login') }}" method="post">
+      <input type="email" name="email" placeholder="you@example.com" required><br>
+      <button class="btn" type="submit">Login</button>
+    </form>
+  </div>
 </body>
 </html>
