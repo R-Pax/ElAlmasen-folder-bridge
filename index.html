@@ -3,6 +3,11 @@
 <head>
   <title>ElAlmasen</title>
   <style>
+    @font-face {
+      font-family: 'BurbankBig';
+      src: url('fonts/BurbankBigCondensed-Black.otf') format('opentype');
+    }
+    
     body { 
       font-family: sans-serif; 
       text-align: center; 
@@ -13,6 +18,10 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
+    }
+
+    h1 {
+      font-family: 'BurbankBig', sans-serif;
     }
 
     #background, #background2 {
@@ -48,13 +57,17 @@
     }
 
     .btn {
+      font-family: 'BurbankBig', sans-serif;
       background: #0078d7; 
       color: white; 
       padding: 12px 24px;
       border-radius: 8px; 
       text-decoration: none; 
       font-size: 18px;
+      position: relative;
+      z-index: 1;
     }
+
     .btn:hover { background: #005fa3; }
   </style>
 </head>
