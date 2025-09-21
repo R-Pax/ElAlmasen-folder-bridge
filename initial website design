@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+  <title>El Almacén</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 50px; }
+    .btn {
+      background: #0078d7; color: white; padding: 12px 24px;
+      border-radius: 8px; text-decoration: none; font-size: 18px;
+    }
+    .btn:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <h1>ElAlmasen</h1>
+  <p>A simple way of accessing your private files</p>
+  <a class="btn" href="https://github.com/R-Pax/ElAlmasen-folder-bridge/blob/main/elalmasen.exe">
+    Download for Windows
+  </a>
+</body>
+</html>
