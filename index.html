@@ -3,72 +3,103 @@
 <head>
   <title>ElAlmasen</title>
   <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
+    body { 
+      font-family: sans-serif; 
+      text-align: center; 
       padding: 50px;
       margin: 0;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      transition: background-image 2s ease-in-out;
+      overflow: hidden;
     }
-    .overlay {
-      position: absolute;
+
+    /* Container that holds the animated background */
+    #background {
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.4);
-      z-index: 0;
+      z-index: -1;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 1s ease-in-out;
+      animation: zoomMotion 20s infinite alternate ease-in-out;
     }
-    .content {
+
+    @keyframes zoomMotion {
+      0%   { transform: scale(1) translate(0, 0); }
+      50%  { transform: scale(1.05) translate(-1%, -1%); }
+      100% { transform: scale(1.1) translate(1%, 1%); }
+    }
+
+    .btn {
+      background: #0078d7; 
+      color: white; 
+      padding: 12px 24px;
+      border-radius: 8px; 
+      text-decoration: none; 
+      font-size: 18px;
       position: relative;
       z-index: 1;
-      color: white;
-    }
-    .btn {
-      background: #0078d7;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 18px;
-      display: inline-block;
-      margin-top: 20px;
     }
     .btn:hover { background: #005fa3; }
+
+    .content {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px 40px;
+      border-radius: 12px;
+      color: white;
+      max-width: 600px;
+    }
   </style>
 </head>
 <body>
-  <div class="overlay"></div>
+  <div id="background"></div>
+
   <div class="content">
     <h1>What is ElAlmasen?</h1>
     <p>ElAlmasen gives you remote access to your files without ever exposing them to third parties.<br>
-       Your data stays on your device, I can’t see, store, or know what you’re hosting</p>
+       Your data stays on your device, I can’t see, store, or know what you’re hosting.</p>
     <a class="btn" href="https://github.com/R-Pax/ElAlmasen-folder-bridge/releases/latest/download/elalmasen.exe">
       Download for Windows
     </a>
   </div>
 
   <script>
-    const backgrounds = [];
-    for (let i = 1; i <= 18; i++) {
-      backgrounds.push(`bg${i}.png`);
-    }
+    const backgrounds = [
+      "backgrounds/bg1.png",
+      "backgrounds/bg2.png",
+      "backgrounds/bg3.png",
+      "backgrounds/bg4.png",
+      "backgrounds/bg5.png",
+      "backgrounds/bg6.png",
+      "backgrounds/bg7.png",
+      "backgrounds/bg8.png",
+      "backgrounds/bg9.png",
+      "backgrounds/bg10.png",
+      "backgrounds/bg11.png",
+      "backgrounds/bg12.png",
+      "backgrounds/bg13.png",
+      "backgrounds/bg14.png",
+      "backgrounds/bg15.png",
+      "backgrounds/bg16.png",
+      "backgrounds/bg17.png",
+      "backgrounds/bg18.png"
+    ];
+
+    const bg = document.getElementById("background");
 
     function changeBackground() {
       const random = Math.floor(Math.random() * backgrounds.length);
-      document.body.style.backgroundImage = `url('${backgrounds[random]}')`;
+      bg.style.backgroundImage = `url('${backgrounds[random]}')`;
     }
 
-    changeBackground();
-
+    // Change every 10 seconds
     setInterval(changeBackground, 10000);
+    changeBackground();
   </script>
 </body>
 </html>
