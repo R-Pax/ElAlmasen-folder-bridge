@@ -1,64 +1,74 @@
 <!doctype html>
 <html>
 <head>
-  <title>ElAlmasen - Login</title>
+  <title>ElAlmasen</title>
   <style>
-    body { 
-      font-family: sans-serif; 
-      margin: 0; 
-      background: #f9f9f9; 
-      height: 100vh; 
-      display: flex; 
-      justify-content: center; 
-      align-items: center; 
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: background-image 2s ease-in-out;
     }
-    .topbar {
+    .overlay {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 0;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      color: white;
     }
     .btn {
       background: #0078d7;
       color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
+      padding: 12px 24px;
+      border-radius: 8px;
       text-decoration: none;
-      cursor: pointer;
-      font-size: 16px;
+      font-size: 18px;
+      display: inline-block;
+      margin-top: 20px;
     }
-    .btn:hover {
-      background: #005fa3;
-    }
-    .card {
-      background: white;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    input {
-      padding: 10px;
-      width: 250px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
+    .btn:hover { background: #005fa3; }
   </style>
 </head>
 <body>
-  <div class="topbar">
+  <div class="overlay"></div>
+  <div class="content">
+    <h1>What is ElAlmasen?</h1>
+    <p>ElAlmasen gives you remote access to your files without ever exposing them to third parties.<br>
+       Your data stays on your device, I can’t see, store, or know what you’re hosting</p>
     <a class="btn" href="https://github.com/R-Pax/ElAlmasen-folder-bridge/releases/latest/download/elalmasen.exe">
-      Download
+      Download for Windows
     </a>
   </div>
-  <div class="card">
-    <h1>ElAlmasen</h1>
-    <p>Enter your email to log in:</p>
-    <form action="{{ url_for('files.login') }}" method="post">
-      <input type="email" name="email" placeholder="you@example.com" required><br>
-      <button class="btn" type="submit">Login</button>
-    </form>
-  </div>
+
+  <script>
+    const backgrounds = [];
+    for (let i = 1; i <= 18; i++) {
+      backgrounds.push(`bg${i}.png`);
+    }
+
+    function changeBackground() {
+      const random = Math.floor(Math.random() * backgrounds.length);
+      document.body.style.backgroundImage = `url('${backgrounds[random]}')`;
+    }
+
+    changeBackground();
+
+    setInterval(changeBackground, 10000);
+  </script>
 </body>
 </html>
